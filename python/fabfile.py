@@ -10,18 +10,13 @@ def host_type():
     run('ip a s')
 
 def puppet_install():
-    run('sudo rpm -Uvh http://yum.puppetlabs.com/puppetlabs-release-el-7.noarch.rpm')
-    run('sudo yum update')
-    run('sudo yum -y install puppet')
+    sudo('rpm -Uvh http://yum.puppetlabs.com/puppetlabs-release-el-7.noarch.rpm')
+    sudo('yum update')
+    sudo('yum -y install puppet')
 
 def puppet_active():
     sudo('puppet resource package puppet ensure=latest')
     sudo('cat /etc/passwd')
-
-def install_package():
-    put('puppet.pp','/tmp/puppet.pp')
-    sudo('puppet apply /tmp/puppet.pp')
-    run('rm -f /tmp/puppet.pp')
 
 def install_package_ondemand(*args):
     input_list = args
