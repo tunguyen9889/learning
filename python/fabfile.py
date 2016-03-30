@@ -25,7 +25,15 @@ def install_package():
 
 def install_package_ondemand(*args):
     input_list = args
-    # package_list = parser(input_list)
-    # for package in package_list:
-    #     print 'Do something with %s' % package
-    print input_list
+    old_string = 'package_to_install'
+    lines = []
+    for package in input_list:
+        for line in open('template.pp'):
+            line = line.replace(old_string,package)
+            lines.append(line)
+    with open('puppet.pp','w') as outfile:
+        for line in lines:
+            outfile.write(line)
+    put('puppet.pp','/tmp/puppet.pp')
+    sudo('puppet apply /tmp/puppet.pp')
+    run('rm -f /tmp/puppet.pp')
