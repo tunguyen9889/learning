@@ -27,9 +27,10 @@ def install_package_ondemand(*args):
         for line in open(templ_file):
             line = line.replace(old_string,package)
             lines.append(line)
-    with open('puppet.pp','w') as outfile:
-        for line in lines:
-            outfile.write(line)
+    f = open('puppet.pp','w')
+    for line in lines:
+            f.write(line)
+    f.close()
     put('puppet.pp','/tmp/puppet.pp')
     sudo('puppet apply /tmp/puppet.pp')
     run('rm -f /tmp/puppet.pp')

@@ -1,4 +1,4 @@
-package { 'kernel':
+package { 'glibc':
     ensure => 'latest',
 }
 package { 'openssl':
