@@ -21,9 +21,10 @@ def puppet_active():
 def install_package_ondemand(*args):
     input_list = args
     old_string = 'package_to_install'
+    templ_file = 'template.pp'
     lines = []
     for package in input_list:
-        for line in open('template.pp'):
+        for line in open(templ_file):
             line = line.replace(old_string,package)
             lines.append(line)
     with open('puppet.pp','w') as outfile:

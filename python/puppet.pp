@@ -1,4 +1,4 @@
-package { 'mariadb':
+package { 'kernel':
     ensure => 'latest',
 }
 package { 'openssl':
