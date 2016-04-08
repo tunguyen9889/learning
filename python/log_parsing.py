@@ -5,12 +5,12 @@ result = dict()
 
 for line in f:
     if line:
-        regex = re.findall('^\[(.*?.na.intgdc.com)\] out: INFO - \d+ : (\d+) : (\w+) : (\d+) days', line)
+        regex = re.search(r'^\[(.*?.na.intgdc.com)\] out: INFO - \d+ : (\d+) : (\w+) : (\d+) days', line)
         if regex:
-            host = regex[0][0]
-            pos = regex[0][1]
-            proj_name = regex[0][2]
-            age = regex[0][3]
+            host = regex.group(1)
+            pos = regex.group(2)
+            proj_name = regex.group(3)
+            age = regex.group(4)
             if host not in result:
                 result[host] = dict()
             result[host][proj_name] = {'Age': age, 'Position': pos}
