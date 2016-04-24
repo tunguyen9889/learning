@@ -13,6 +13,8 @@ def checkio(year):
 # Clearance solution
 # def checkio(year):
 #     return sum(1 for i in range(1, 13) if calendar.weekday(year, i, 13) == 4)
+# Or
+# return sum(date(year, month, 13).isoweekday() == 5 for month in range(1,13))
 
 
 if __name__ == '__main__':
