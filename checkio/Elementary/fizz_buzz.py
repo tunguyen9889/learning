@@ -8,6 +8,11 @@ def checkio(number):
     else:
         return str(number)
 
+# Smarter solution ;)
+# def checkio(number):
+#     mapping = {3: "Fizz", 5: "Buzz"}
+#     return ' '.join([mapping[x] for x in [3, 5] if number % x == 0]) or str(number)
+
 
 if __name__ == '__main__':
     assert checkio(15) == "Fizz Buzz", "15 is divisible by 3 and 5"

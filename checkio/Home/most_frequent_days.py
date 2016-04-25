@@ -21,6 +21,14 @@ def most_frequent_days(year):
     return frequent_days
 
 
+# Smarter solution
+# from calendar import day_name, isleap, weekday
+#
+# def most_frequent_days(year):
+#     days = (weekday(year, 1, 1 + i) for i in range(1 + isleap(year)))
+#     return [day_name[d] for d in sorted(days)]
+
+
 if __name__ == '__main__':
     assert most_frequent_days(2399) == ['Friday'], "1st example"
     assert most_frequent_days(1152) == ['Tuesday', 'Wednesday'], "2nd example"
